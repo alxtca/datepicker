@@ -5,6 +5,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/
 import {DateFnsAdapter} from "@angular/material-date-fns-adapter";
 import { nb } from 'date-fns/locale';
 import {DateFormatOutputFNS} from "../../models/date-formats";
+import {HBDateAdapter} from "../../HBDateAdapter";
 
 //Setting the selected date
 //The type of values that the datepicker expects
@@ -34,8 +35,8 @@ export const MY_DATE_FORMATS = {
     { provide: MAT_DATE_LOCALE, useValue: nb },
     {
       provide: DateAdapter,
-      useClass: DateFnsAdapter,
-      // useClass: HBDateAdapter, //are these the methods called by datepicker? seem so.
+      // useClass: DateFnsAdapter,
+      useClass: HBDateAdapter, //are these the methods called by datepicker? seem so.
       //deps: [MAT_DATE_LOCALE]
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
@@ -55,9 +56,6 @@ export class DatepickerWrapperFnsComponent implements OnInit {
     this.local_control = new FormControl(this.control.value)
 
     this.local_control.valueChanges.subscribe(v => {
-      console.log(v)
-      // console.log(v)
-
 
       if (isValid(v) && this.withinRange(v)){
         this.control.setValue(format(v, this.config))
