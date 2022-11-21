@@ -1,0 +1,68 @@
+<!--<div *ngIf="!user">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="user">
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+      <mat-icon svgIcon="{{user.avatar}}"></mat-icon>
+      <mat-card-title><h2>{{user.name}}</h2></mat-card-title>
+      <mat-card-subtitle>Birthday {{user.birthDate | date}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="First"> {{user.bio}} </mat-tab>
+        <mat-tab label="Second">
+          <app-notes [notes]="user.notes"></app-notes>
+        </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+
+  </mat-card>
+</div>-->
+
+<input type="date" [formControl]="date0">
+<input
+  type="date"
+  [ngModel] ="dt | date:'yyyy-MM-dd'"
+  (ngModelChange)="dt = $event"
+  (change)="logChange()"
+>
+<button (click)="updateDt()">Update dt</button>
+
+
+<h2>Selfmade</h2>
+<app-datepicker-wrapper-selfmade [control]="date3" [config]="config1_fns"></app-datepicker-wrapper-selfmade>
+
+<h2>With mask a2</h2>
+<app-datepicker-wrapper-mask-a2  [control]="date2" [show_guide]="true"></app-datepicker-wrapper-mask-a2>
+<!--<app-datepicker-wrapper-mask-a2  [control]="date3" [show_guide]="true"></app-datepicker-wrapper-mask-a2>
+<app-datepicker-wrapper-mask-a2  [control]="date2" [show_guide]="false"></app-datepicker-wrapper-mask-a2>-->
+
+<h2>With mask ngx</h2>
+<app-datepicker-wrapper-mask-ngx [control]="date2"></app-datepicker-wrapper-mask-ngx>
+
+
+<h2>moment</h2>
+<app-datepicker-wrapper-moment  [control]="date4"></app-datepicker-wrapper-moment>
+<app-datepicker-wrapper-moment-m [control]="date3"></app-datepicker-wrapper-moment-m>
+
+<h2>date-fns</h2>
+<app-datepicker-wrapper-fns [control]="date1" [config]="config1_fns"></app-datepicker-wrapper-fns>
+<app-datepicker-wrapper-fns-m [control]="date1" [config]="config2_fns"></app-datepicker-wrapper-fns-m>
+
+<h2>Native</h2>
+<app-datepicker-wrapper-native [control]="date3"></app-datepicker-wrapper-native>
+<app-datepicker-wrapper-native-m [control]="date3"></app-datepicker-wrapper-native-m>
+
+
+
+
+
+
+
+

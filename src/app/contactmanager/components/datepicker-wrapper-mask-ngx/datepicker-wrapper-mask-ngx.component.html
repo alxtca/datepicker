@@ -1,0 +1,29 @@
+<!--
+expect “More than one custom value accessor” error.
+
+mask="d0/M0/0000"
+mask="d0.M0.0000" - går ikke trykke punktum. Må trykke skråstrekk fortsatt da komme punktum.
+- går ikke å skrive for måned 1/
+
+-->
+<mat-card>
+  <mat-form-field appearance="fill" class="">
+
+    <input
+      #input
+      matInput
+      mask="d0.M0.0000"
+      [matDatepicker]="dp"
+      (dateChange)="dateWasChanged(input)"
+      (blur)="dateWasChanged(input)"
+    >
+
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+</mat-card>
+<div>
+  <p>control.value{{control.value}}</p>
+</div>

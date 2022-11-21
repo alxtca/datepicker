@@ -1,0 +1,82 @@
+
+<!--here input is set through ref to nativeElement-->
+
+<!--<mat-card>
+  <h4>{{config.outputdate}}</h4>
+  <mat-form-field appearance="fill">
+    <input
+      #input
+      matInput
+
+      [matDatepicker]="dp"
+      (input)="outputStringFormatting()"
+      (dateChange)="outputStringFormatting()"
+
+    >
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp ></mat-datepicker>
+  </mat-form-field>
+  <p>{{control.value}}</p>
+</mat-card>-->
+
+
+<mat-card>
+  <h4>{{config}}</h4>
+
+<!--  <div>
+    <input
+      #realinput
+      type="date"
+      [ngModel] ="local_date | date:'yyyy-MM-dd'"
+      (ngModelChange)="local_date = $event"
+      (change)="handleChange()"
+    >
+    <mat-datepicker-toggle matSuffix [for]="dp">
+      <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+    </mat-datepicker-toggle>
+  </div>-->
+
+  <mat-form-field appearance="fill" class="">
+    <!--type="date"-->
+    <!--
+      [min]="minDate"
+      [max]="maxDate"
+      [matDatepickerFilter]="dateFilter"
+      [formControl]="local_control"
+      type="date"
+      [valueAsDate]="local_date"
+    -->
+
+<!--    potential problem:
+    accepted date format may change depending on user locale
+    thus input field will not be populated with "yyyy-MM-dd"-->
+    <input
+      #input
+      matInput
+      [textMask]="mask"
+      placeholder="dd.mm.åååå"
+
+      [matDatepicker]="dp"
+      (dateChange)="dateWasChanged(input)"
+      (blur)="dateWasChanged(input)"
+    >
+    <!--
+    - affects only modal view
+    startView="year"
+    startView="multi-year"
+    [startAt]="startDate"
+    [dateClass]="dateClass"
+    -->
+    <mat-datepicker-toggle matSuffix [for]="dp">
+      <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+</mat-card>
+<div>
+  <p>control.value{{control.value}}</p>
+  <p>local_date: {{local_date}}</p>
+</div>

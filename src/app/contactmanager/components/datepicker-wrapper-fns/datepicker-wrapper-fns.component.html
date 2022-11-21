@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-form-field appearance="fill" class="">
+    <input
+      matInput
+      [formControl]="local_control"
+      [matDatepicker]="dp"
+    >
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+</mat-card>
+<div>
+  <p>control.value{{control.value}}</p>
+</div>

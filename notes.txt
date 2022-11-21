@@ -1,0 +1,114 @@
+>>>>>>>>>>>>>>>>>>> ANGULAR MATERIAL COURSE
+1. uninstall previous versions and install new
+  npm uninstall -g @angular/cli
+  npm uninstall -g angular-cli
+
+  npm install -g @angular/cli@14.2.3
+
+2. create new application
+  ng new angularmaterial
+    or without an global angular cli
+    npx @angular/cli@latest new angularmaterial
+  no routing
+  SCSS
+
+3. install angular material
+  ng add @angular/material@14.2.2
+
+4. move styles
+by default angular material styles are added to angular.json
+under build and test styles. move it to styles.scss
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+5. start using material component
+  https://material.angular.io/components/categories
+  select component of interest
+  check API for imports, and add it to the module
+  use code examples in overview
+
+5.1 This step can be used instead of step 5
+  generate a module with all of angular material components
+  ng g m shared/material --dry-run --flat
+  material.module shall export all angular-material modules
+  and app.module (or any other module that need angular material) shall import material-module
+
+6. create demo module with routing
+  ng g m demo/demo --dry-run --flat --routing
+
+7. create component buttons, without extra files
+  ng g c demo/buttons --dry-run --skip-tests --inline-template --inline-style
+
+8. add routes to app.module
+
+  ...very complex imports exports modules, rounting, modules, more routing
+  re-watch application routes and Creating a Demo Module
+
+9. create flexbox component to demo module
+  ng g c demo/flexbox --dry-run --skip-tests
+  add route for this component in demo-routing.module.ts
+
+10. install angular flex-layout
+  npm i -s @angular/flex-layout
+  npm show @angular/flex-layout version
+  (should be version 14.0.0-beta.40)
+
+11. Start building the app
+  (this will be the host for other components - main app sort of)
+  ng g m contactmanager
+  ng g c contactmanager/contactmanager-app --flat --skip-tests --inline-style --inline-template
+  (the hosted)
+  ng g c contactmanager/components/toolbar --skip-tests
+  ng g c contactmanager/components/main-content --skip-tests
+  ng g c contactmanager/components/sidenav --skip-tests
+
+  lazyload contactmanager in app.module
+  move routes from app.module to contactmanager.module
+  and delete them all, and write new once
+
+...
+12. component react to Breakpoint media query
+  private breakpointObserver: BreakpointObserver
+
+13. api for the app
+  https://angular-material-api.azurewebsites.net/users
+
+14. create service
+  ng g s contactmanager/services/user --dry-run --skip-tests
+
+  service need to be provided to module
+  providers: [UserService]
+
+15. create user model and note
+  ng g class contactmanager/models/user --skip-tests
+  ng g class contactmanager/models/note --skip-tests
+
+16. mat-nav-list
+  MatIconRegistry inject and use to
+  register and load icons once per application in app.components.ts
+  (I think)because svg url comes from web,
+  thus they can be used for cross-site scripting.
+  So these must be sanitized (with DomSanitizer)
+
+17. add routerLink to icon+name
+  I don't remmember ...
+
+18. create notes component
+  ng g c contactmanager/components/notes --skip-tests --dry-run
+
+19. create dialog, with new component
+  ng g c contactmanager/components/new-contact-dialog --skip-tests
+
+20. datepicker wrapper
+  ng g c contactmanager/components/datepicker-wrapper --skip-tests
+
+
+
+
+
+
+
+
+
+
+
+

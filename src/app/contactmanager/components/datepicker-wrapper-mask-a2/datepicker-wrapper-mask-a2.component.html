@@ -1,0 +1,26 @@
+<mat-card>
+  <h4>{{config}}</h4>
+
+  <mat-form-field appearance="fill" class="">
+
+    <input
+      #input
+      matInput
+      [textMask]="mask"
+      placeholder="dd.mm.åååå"
+      [matDatepicker]="dp"
+      (dateChange)="dateWasChanged(input)"
+      (blur)="dateWasChanged(input)"
+    >
+
+    <mat-datepicker-toggle matSuffix [for]="dp">
+      <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+</mat-card>
+<div>
+  <p>control.value{{control.value}}</p>
+</div>

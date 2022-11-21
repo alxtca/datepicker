@@ -1,0 +1,15 @@
+.highlight-date {
+  background-color: red;
+}
+
+::-webkit-calendar-picker-indicator { display: none; }
+
+/*::-webkit-datetime-edit-month-field { color: blue; }
+::-webkit-datetime-edit-day-field { color: green; }
+::-webkit-datetime-edit-year-field { color: purple; }*/
+
+/*sass alternative?*/
+
+.hideit {
+  display: none;
+}

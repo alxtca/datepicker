@@ -1,0 +1,78 @@
+<!--
+todo:
+-font that makes mm same width as 2 digits
+
+-accept only numbers
+
+-autofilling?
+-ctrl+A kan velge alle input felt? (fungerer bare på første input i native)
+-ctrl+V - deactivated
+
+-select all when focusing, instead of changing background color - select()
+
+input logic
+- when type 1 digit, set 0 in front (except in year)
+- if first digit entered is >3 (for day, and 2 for month),
+  set input to be 04 and change focus to next field
+- when data is filled, auto switch focus to next input
+
+browser dependant logic:
+- background color based on browser or user theme
+
+- -->
+
+
+<div class="date-container">
+  <input
+    #day
+    appNumbersOnly
+    class="date-input-day"
+    placeholder="dd"
+    (keyup.arrowRight)="chageFocus(month)"
+    maxlength="2"
+    (change)="checkInput(day)"
+    (focus)="day.select()"
+
+  >
+  .
+  <input
+    #month
+    appNumbersOnly
+    class="date-input-month"
+    placeholder="mm"
+    (keyup.arrowLeft)="chageFocus(day)"
+    (keyup.arrowRight)="chageFocus(year)"
+    maxlength="2"
+    (focus)="month.select()"
+  >
+  .
+  <input
+    #year
+    appNumbersOnly
+    class="date-input-year"
+    placeholder="åååå"
+    (keyup.arrowLeft)="chageFocus(month)"
+    maxlength="4"
+    (focus)="year.select()"
+  >
+</div>
+
+<div>
+  <input type="date">
+</div>
+
+<mat-card>
+  <mat-form-field appearance="fill" class="">
+    <input
+      matInput
+      [formControl]="local_control"
+      [matDatepicker]="dp"
+    >
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+</mat-card>
+<div>
+  <p>control.value{{control.value}}</p>
+</div>

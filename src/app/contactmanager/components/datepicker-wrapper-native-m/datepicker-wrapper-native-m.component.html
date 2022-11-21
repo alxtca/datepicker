@@ -1,0 +1,33 @@
+<mat-card>
+<!--  <input id="bday-month" type="month" name="bday-month" value="{{local_date}}" />-->
+
+  <mat-form-field appearance="fill" class="">
+
+<!--    <input
+      #input
+      matInput
+      type="month"
+      [ngModel] ="local_date | date:'yyyy-MM'"
+      (ngModelChange)="dateWasChanged($event)"
+      [matDatepicker]="dp"
+    >-->
+
+    <input
+      matInput
+      [matDatepicker]="dp"
+      [formControl]="date"
+    >
+
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp
+                    startView="multi-year"
+                    (monthSelected)="setMonthAndYear($event, dp)">
+    </mat-datepicker>
+
+  </mat-form-field>
+
+</mat-card>
+
+<div>
+  <p>control.value{{control.value}}</p>
+</div>

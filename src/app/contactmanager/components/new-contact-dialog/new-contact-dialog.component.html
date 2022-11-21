@@ -1,0 +1,49 @@
+<h2> Add new contact </h2>
+
+<mat-dialog-content class="skema">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="user.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Avatar</mat-label>
+    <mat-select [(ngModel)]="user.avatar">
+
+      <mat-select-trigger>
+        <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{user.avatar}}
+      </mat-select-trigger>
+
+      <mat-option *ngFor="let avatar of avatars" [value]="avatar">
+        <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{user.avatar}}
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Born</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="birthDate" #input>
+    <!--
+    (dateChange)="setDate(dateRef)" #dateRef
+    [(ngModel)]="user.birthDate"-->
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker startView="year" [startAt]="year1990"></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Bio</mat-label>
+    <textarea matInput [(ngModel)]="user.bio"></textarea>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false" (click)="saveUser()">Save</button>
+  <button mat-button [mat-dialog-close]="true" (click)="dismiss()">Cancel</button>
+</mat-dialog-actions>
+

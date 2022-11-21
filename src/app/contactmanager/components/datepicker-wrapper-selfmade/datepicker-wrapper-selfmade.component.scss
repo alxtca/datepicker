@@ -1,0 +1,55 @@
+.date-container {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 7em;
+}
+
+/*what I want to do:
+- when input field is focused:
+- no cursor is visible,
+- background change color to text-selected
+- placeholder values change color to white/or so
+- no borders on input fields
+
+*/
+
+.date-input-day {
+  width: 2ch;
+}
+.date-input-month {
+  width: 2ch;
+}
+.date-input-year {
+  width: 4ch;
+}
+
+input[class*='date-input'] {
+  /*must use monospace font*/
+  font-family: Monospaced, Consolas, "Courier New";
+  font-size: 7rem;
+  border: 0;
+  box-shadow: none;
+}
+input[class*='date-input']:focus {
+  background-color: #0074ffcc;
+  outline: 0;
+  color: transparent;
+  text-shadow: 0 0 0 white;
+  box-shadow: none;
+}
+/*to hide caret*/
+input[class*='date-input']:focus::placeholder {
+  color: white;
+}
+
+input[type=date] {
+  font-size: 7em;
+}
+
+
+
+
+
+
+/*[^="start"]  [*="contain"]  [$="ends"] ( ^ * $ rules are from Regular expressions )*/
