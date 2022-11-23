@@ -2,10 +2,10 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, TemplateRef, ViewCh
 import {FormControl} from "@angular/forms";
 import {compareAsc, format, formatISO, isValid, parse, parseISO, toDate} from 'date-fns'
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
-import {DateFnsAdapter} from "@angular/material-date-fns-adapter";
 import { nb } from 'date-fns/locale';
 import {MatDatepicker} from "@angular/material/datepicker";
 import {DateFormatOutputFNS} from "../../models/date-formats";
+import {HBDateAdapter} from "../../HBDateAdapter";
 
 //Setting the selected date
 //The type of values that the datepicker expects
@@ -17,7 +17,9 @@ import {DateFormatOutputFNS} from "../../models/date-formats";
 
 export const MY_DATE_FORMATS = {
   parse: {
-    dateInput: "MM.yyyy", // den er for <input
+    // dateInput: "MM.yyyy", // den er for <input
+    dateInput: ["MM.yyyy", "MM,yyyy", "MM/yyyy", ], // den er for <input
+
   },
   display: {
     dateInput: "MM.yyyy", // satt av <mat-datepicker
@@ -33,12 +35,7 @@ export const MY_DATE_FORMATS = {
   styleUrls: ['./datepicker-wrapper-fns-m.component.scss'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: nb },
-    {
-      provide: DateAdapter,
-      useClass: DateFnsAdapter,
-      // useClass: HBDateAdapter, //are these the methods called by datepicker? seem so.
-      //deps: [MAT_DATE_LOCALE]
-    },
+    { provide: DateAdapter, useClass: HBDateAdapter,  },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
   ],
 })
@@ -56,10 +53,7 @@ export class DatepickerWrapperFnsMComponent implements OnInit {
     this.local_control = new FormControl(this.control.value)
 
     this.local_control.valueChanges.subscribe(v => {
-      console.log(v)
-      // console.log(v)
-
-      console.log()
+      console.log("v \n", v)
 
       if (isValid(v) && this.withinRange(v)){
         this.control.setValue(format(v, this.config))

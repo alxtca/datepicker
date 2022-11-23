@@ -183,3 +183,6 @@ export class DatepickerWrapperComponent implements OnInit, AfterViewInit {
 // -UX pictures from Randi
 //-use formControl in <input>
 //-where does validation happen - in wrapper or outside?
+
+//$event -> input: Date
+//#input -> input: HTMLInputElement

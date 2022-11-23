@@ -3,9 +3,11 @@ todo:
 -font that makes mm same width as 2 digits
 
 -accept only numbers
+-provide feedback to user when he types non allowable symbols
 
 -autofilling?
 -ctrl+A kan velge alle input felt? (fungerer bare på første input i native)
+-ctrl-C kan kopiere hele dato
 -ctrl+V - deactivated
 
 -select all when focusing, instead of changing background color - select()
@@ -21,38 +23,63 @@ browser dependant logic:
 
 - -->
 
+<!-- can directive have input parameters?
+YES!
+  directiveName
+  [directiveInputParameterName]="value"
+  [dateInputValue]="day" || "month" || "year"
+
+/////
+to make template more readable, move what possible inside class
+-->
+
 
 <div class="date-container">
   <input
     #day
+    [formControl]="day_value"
+
     appNumbersOnly
+    [dateInputType]="input_day"
+
     class="date-input-day"
     placeholder="dd"
-    (keyup.arrowRight)="chageFocus(month)"
     maxlength="2"
-    (change)="checkInput(day)"
+
+    (keyup.arrowRight)="chageFocus(month)"
     (focus)="day.select()"
 
   >
   .
   <input
     #month
+    [formControl]="month_value"
+
     appNumbersOnly
+    [dateInputType]="input_month"
+
     class="date-input-month"
     placeholder="mm"
+    maxlength="2"
+
     (keyup.arrowLeft)="chageFocus(day)"
     (keyup.arrowRight)="chageFocus(year)"
-    maxlength="2"
     (focus)="month.select()"
   >
   .
   <input
     #year
+    [formControl]="year_value"
+
+
     appNumbersOnly
+    [dateInputType]="input_year"
+
     class="date-input-year"
     placeholder="åååå"
-    (keyup.arrowLeft)="chageFocus(month)"
     maxlength="4"
+
+    (keyup.arrowLeft)="chageFocus(month)"
     (focus)="year.select()"
   >
 </div>

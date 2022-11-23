@@ -54,7 +54,7 @@ export class DatepickerWrapperNativeComponent implements OnInit, AfterViewInit {
 
   //$event -> input: Date
   //#input -> input: HTMLInputElement
-  //  input.value - typeof string in iso format yyy-mm-dd
+  //  input.value - typeof string in iso format yyyy-mm-dd
   dateWasChanged(input: Date) {
     console.log("dateChange: \n", input, "\n type:", typeof input)
 

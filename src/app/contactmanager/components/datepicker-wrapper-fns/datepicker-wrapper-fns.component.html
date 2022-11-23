@@ -4,6 +4,7 @@
       matInput
       [formControl]="local_control"
       [matDatepicker]="dp"
+      placeholder="dd.mm.åååå"
     >
     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
     <mat-datepicker #dp></mat-datepicker>
@@ -13,3 +14,15 @@
 <div>
   <p>control.value{{control.value}}</p>
 </div>
+
+<!--
+to do
+- still configurable output? tror det -> this.control.setValue(format(v, this.config))
+- min/max - må bli brukt for både datepicker og input validering
+- allowable period based on first selection (hva med daterange?)
+
+OBS!
+1. hva date picker kan velge
+2. hva går å skrive i input feltet
+
+-->

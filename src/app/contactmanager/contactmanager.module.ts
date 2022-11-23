@@ -62,7 +62,7 @@ const maskConfig: Partial<IConfig> = {
     DatepickerWrapperFnsMComponent,
     DatepickerWrapperSelfmadeComponent,
     DatepickerWrapperSelfmadeComponent,
-    NumbersOnlyDirective
+    NumbersOnlyDirective,
   ],
   imports: [
     CommonModule,
